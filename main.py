@@ -1,35 +1,13 @@
 gastos = []
 
 
-def registrar_gasto():
-    print("\n--- REGISTRAR GASTO ---")
-
-    placa = input("Ingrese la placa: ")
-    concepto = input("Ingrese el concepto: ")
-    valor = float(input("Ingrese el valor: "))
-
-    gasto = {
-        "placa": placa,
-        "concepto": concepto,
-        "valor": valor
-    }
-
-    gastos.append(gasto)
-
-    print("Gasto registrado correctamente.\n")
-
-
-def mostrar_total_gastos():
-    total = 0
-
-    for gasto in gastos:
-        total += gasto["valor"]
-
-    print(f"\nTotal acumulado: ${total}\n")
-
-
+# =========================
+# BUSQUEDA POR PLACA
+# =========================
 def buscar_por_placa():
-    placa_buscar = input("\nIngrese la placa a buscar: ")
+    print("\n--- BUSCAR GASTOS POR PLACA ---")
+
+    placa_buscar = input("Ingrese la placa: ")
 
     encontrado = False
 
@@ -42,30 +20,33 @@ def buscar_por_placa():
             encontrado = True
 
     if not encontrado:
-        print("No se encontraron gastos.")
+        print("No se encontraron gastos para esa placa.")
 
 
+# =========================
+# MENU PRINCIPAL
+# =========================
 while True:
-    print("===== CONTROL DE GASTOS =====")
+    print("\n===== CONTROL DE GASTOS =====")
     print("1. Registrar gasto")
-    print("2. Mostrar total")
+    print("2. Mostrar total de gastos")
     print("3. Buscar por placa")
     print("4. Salir")
 
     opcion = input("Seleccione una opción: ")
 
     if opcion == "1":
-        registrar_gasto()
+        print("Función de registro viene de otra rama (merge)")
 
     elif opcion == "2":
-        mostrar_total_gastos()
+        print("Función de cálculo viene de otra rama (merge)")
 
     elif opcion == "3":
         buscar_por_placa()
 
     elif opcion == "4":
-        print("Saliendo...")
+        print("Saliendo del sistema...")
         break
 
     else:
-        print("Opción inválida\n")
+        print("Opción inválida")
