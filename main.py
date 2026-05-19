@@ -1,109 +1,23 @@
-gastos = []
+def editar_gasto():
+    print("\n--- EDITAR GASTO ---")
 
-
-def registrar_gasto():
-    print("\n--- REGISTRAR GASTO ---")
-
-    placa = input("Ingrese la placa: ")
-    concepto = input("Ingrese el concepto: ")
-    valor = float(input("Ingrese el valor: "))
-
-    gasto = {
-        "placa": placa,
-        "concepto": concepto,
-        "valor": valor
-    }
-
-    gastos.append(gasto)
-
-    print("Gasto registrado correctamente.\n")
-
-
-def mostrar_total_gastos():
-    total = 0
-
-    for gasto in gastos:
-        total += gasto["valor"]
-
-    print(f"\nTotal acumulado: ${total}\n")
-
-
-def buscar_por_placa():
-    print("\n--- BUSCAR GASTOS POR PLACA ---")
-
-    placa_buscar = input("Ingrese la placa: ")
-
-    encontrado = False
-
-    for gasto in gastos:
-        if gasto["placa"] == placa_buscar:
-            print("-------------------")
-            print(f"Placa: {gasto['placa']}")
-            print(f"Concepto: {gasto['concepto']}")
-            print(f"Valor: ${gasto['valor']}")
-            encontrado = True
-
-    if not encontrado:
-        print("No se encontraron gastos para esa placa.")
-
-
-def mostrar_todos_los_gastos():
-    print("\n--- TODOS LOS GASTOS ---")
-
-    if len(gastos) == 0:
-        print("No hay gastos registrados.")
-        return
-
-    for gasto in gastos:
-        print("-------------------")
-        print(f"Placa: {gasto['placa']}")
-        print(f"Concepto: {gasto['concepto']}")
-        print(f"Valor: ${gasto['valor']}")
-
-
-def eliminar_gasto():
-    print("\n--- ELIMINAR GASTO ---")
-
-    placa = input("Ingrese la placa del gasto a eliminar: ")
+    placa = input("Ingrese la placa del gasto a editar: ")
 
     for gasto in gastos:
         if gasto["placa"] == placa:
-            gastos.remove(gasto)
-            print("Gasto eliminado correctamente.")
+
+            nuevo_concepto = input("Nuevo concepto: ")
+
+            try:
+                nuevo_valor = float(input("Nuevo valor: "))
+            except ValueError:
+                print("Debe ingresar un número válido.")
+                return
+
+            gasto["concepto"] = nuevo_concepto
+            gasto["valor"] = nuevo_valor
+
+            print("Gasto actualizado correctamente.")
             return
 
-    print("No se encontró un gasto con esa placa.")
-
-
-while True:
-    print("\n===== CONTROL DE GASTOS =====")
-    print("1. Registrar gasto")
-    print("2. Mostrar total de gastos")
-    print("3. Buscar por placa")
-    print("4. Mostrar todos los gastos")
-    print("5. Eliminar gasto")
-    print("6. Salir")
-
-    opcion = input("Seleccione una opción: ")
-
-    if opcion == "1":
-        registrar_gasto()
-
-    elif opcion == "2":
-        mostrar_total_gastos()
-
-    elif opcion == "3":
-        buscar_por_placa()
-
-    elif opcion == "4":
-        mostrar_todos_los_gastos()
-
-    elif opcion == "5":
-        eliminar_gasto()
-
-    elif opcion == "6":
-        print("Saliendo del sistema...")
-        break
-
-    else:
-        print("Opción inválida")
+    print("No se encontró esa placa.")
