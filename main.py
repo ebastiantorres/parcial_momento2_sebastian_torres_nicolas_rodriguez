@@ -1,4 +1,3 @@
-
 gastos = []
 
 
@@ -48,12 +47,42 @@ def buscar_por_placa():
         print("No se encontraron gastos para esa placa.")
 
 
+def mostrar_todos_los_gastos():
+    print("\n--- TODOS LOS GASTOS ---")
+
+    if len(gastos) == 0:
+        print("No hay gastos registrados.")
+        return
+
+    for gasto in gastos:
+        print("-------------------")
+        print(f"Placa: {gasto['placa']}")
+        print(f"Concepto: {gasto['concepto']}")
+        print(f"Valor: ${gasto['valor']}")
+
+
+def eliminar_gasto():
+    print("\n--- ELIMINAR GASTO ---")
+
+    placa = input("Ingrese la placa del gasto a eliminar: ")
+
+    for gasto in gastos:
+        if gasto["placa"] == placa:
+            gastos.remove(gasto)
+            print("Gasto eliminado correctamente.")
+            return
+
+    print("No se encontró un gasto con esa placa.")
+
+
 while True:
     print("\n===== CONTROL DE GASTOS =====")
     print("1. Registrar gasto")
     print("2. Mostrar total de gastos")
     print("3. Buscar por placa")
-    print("4. Salir")
+    print("4. Mostrar todos los gastos")
+    print("5. Eliminar gasto")
+    print("6. Salir")
 
     opcion = input("Seleccione una opción: ")
 
@@ -67,6 +96,12 @@ while True:
         buscar_por_placa()
 
     elif opcion == "4":
+        mostrar_todos_los_gastos()
+
+    elif opcion == "5":
+        eliminar_gasto()
+
+    elif opcion == "6":
         print("Saliendo del sistema...")
         break
 
