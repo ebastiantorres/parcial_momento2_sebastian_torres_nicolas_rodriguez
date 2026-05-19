@@ -1,0 +1,24 @@
+PASOS PARA SUBIR EL PROYECTO A GITHUB
+
+1. Abrir Git Bash o la terminal dentro de la carpeta del proyecto.
+
+2. Verificar la rama actual:
+   git branch
+
+3. Cambiar a la rama principal:
+   git checkout main
+
+4. Agregar los cambios:
+   git add .
+
+5. Crear el commit:
+   git commit -m "Se corrigen validaciones y se agrega editar gasto"
+
+6. Unir la rama nueva-funcion-gastos:
+   git merge nueva-funcion-gastos
+
+7. Subir los cambios al repositorio:
+   git push origin main
+
+8. Si también deseas subir la rama:
+   git push origin nueva-funcion-gastos
